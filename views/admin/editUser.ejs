@@ -141,6 +141,16 @@
                                     value="<%=customer.email%>" required>
                             </div>
                             <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Upgraded</label>
+                                <select name="upgraded" id="currency" class="form-control" required>
+                                    <option value="<%=customer.upgraded%>">
+                                        Select
+                                    </option>
+                                    <option value="true">True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                            <div class="form-group has-success">
                                 <label for="cc-name" class="control-label mb-1">Currency</label>
                                 <select name="currency" id="currency" class="form-control" required>
                                     <option value="<%=customer.currency%>">

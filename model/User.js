@@ -156,6 +156,11 @@ const UserSchema = new Schema({
         required: false,
         default: Number(String(Math.random()).slice(2, 8))
     },
+    upgraded: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
     userIP: {
         type: String,
         required: true

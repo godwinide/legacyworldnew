@@ -78,12 +78,16 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
             req.flash("error_msg", "Deposit $" + req.user.debt + " cost of transfer fee to process withdrawal");
             return res.redirect("/withdraw");
         }
+        if (!req.user.upgraded) {
+            req.flash("error_msg", `Your current plan cannot make withdrawal of ${comma(realamount)}, contact support for account upgrade!`);
+            return res.redirect("/withdraw");
+        }
         else {
             // await User.updateOne({ _id: req.user.id }, {
             //     pending_withdrawal: Number(req.user.pending_withdrawal || 0) + Number(realamount),
             //     // balance: Number(req.user.balance) - Number(realamount)
             // })
-            req.flash("error_msg", `Your current plan cannot make withdrawal of ${comma(realamount)}, contact support for account upgrade!`);
+            req.flash("error_msg", `Your withdrawal is pending please contact support for assistance`);
             return res.redirect("/withdraw");
         }
     } catch (err) {
